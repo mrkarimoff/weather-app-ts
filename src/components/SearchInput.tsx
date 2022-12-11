@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import ClearIcon from "@mui/icons-material/Clear";
+import SearchIcon from "@mui/icons-material/Search";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import InputAdornment from "@mui/material/InputAdornment";
 
 export default function SearchInput() {
+  const [isOpen, setIsOpen] = useState(false);
+
   // Debounce function is used to wait for the user input
   const debounce = (fn: Function, ms = 300) => {
     let timeoutId: ReturnType<typeof setTimeout>;
@@ -12,7 +18,7 @@ export default function SearchInput() {
     };
   };
 
-  const handleChange = debounce((a: string) => implementChange(a), 1500);
+  const handleChange = debounce((a: string) => implementChange(a), 2000);
 
   function implementChange(inpVal: string) {
     let trimmedValue = inpVal.trim();
@@ -21,22 +27,37 @@ export default function SearchInput() {
     }
   }
 
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Autocomplete
-      sx={{ width: 300 }}
+      fullWidth
       size="small"
+      forcePopupIcon
+      onOpen={handleOpen}
+      onClose={handleClose}
       freeSolo
-      id="free-solo-2-demo"
-      disableClearable
+      disableClearable={false}
+      clearIcon={<ClearIcon fontSize="small" sx={{ color: "#fff" }} />}
       options={top100Films.map((option) => option.title)}
+      popupIcon={<ArrowDropDownIcon sx={{ color: "#fff" }} />}
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Search input"
+          label="Search for city"
           onChange={(e) => handleChange(e.target.value)}
           InputProps={{
             ...params.InputProps,
-            type: "search",
+            startAdornment: isOpen && (
+              <InputAdornment position="start">
+                <SearchIcon sx={{ color: "#fff" }} />
+              </InputAdornment>
+            ),
           }}
         />
       )}

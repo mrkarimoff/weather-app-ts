@@ -1,3 +1,13 @@
+@font-face {
+  font-family: MartianMono;
+  src: url(./fonts/MartianMono.ttf);
+}
+
+html {
+  font-family: MartianMono;
+  font-weight: 400;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,5 +15,29 @@
 }
 
 body {
-  background-color: aliceblue;
+  background-image: url(/public/img/day3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.App {
+  background-color: rgba(0, 81, 147, 0.3);
+  height: 100vh;
+}
+
+.App .searchInp {
+  width: 500px;
+  margin-block: 20px;
+}
+
+.App .searchInp .css-16whyqn-MuiFormLabel-root-MuiInputLabel-root {
+  color: #fff;
+}
+
+.App .searchInp .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: #fff;
+}
+
+.App .searchInp .css-mdo4du-MuiFormLabel-root-MuiInputLabel-root {
+  color: #333;
 }
