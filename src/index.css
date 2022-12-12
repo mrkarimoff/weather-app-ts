@@ -30,14 +30,16 @@ body {
   margin-block: 20px;
 }
 
-.App .searchInp .css-16whyqn-MuiFormLabel-root-MuiInputLabel-root {
+/* Always look at this classname when re-styling the component ".css-16whyqn-MuiFormLabel-root-MuiInputLabel-root" */
+
+/* .App .searchInp .css-16whyqn-MuiFormLabel-root-MuiInputLabel-root {
   color: #fff;
-}
+} */
 
-.App .searchInp .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+/* .App .searchInp .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border-color: #fff;
-}
+} */
 
-.App .searchInp .css-mdo4du-MuiFormLabel-root-MuiInputLabel-root {
+/* .App .searchInp .css-mdo4du-MuiFormLabel-root-MuiInputLabel-root {
   color: #333;
-}
+} */

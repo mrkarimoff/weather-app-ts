@@ -14,11 +14,25 @@ const theme = createTheme({
         root: {
           color: "#fff",
           borderColor: "#fff",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#fff",
+          },
           "&:hover .MuiOutlinedInput-notchedOutline": {
             borderColor: "#fff",
           },
           "&:focus-within .MuiOutlinedInput-notchedOutline": {
             borderColor: "#fff",
+          },
+        },
+      },
+    },
+    // the bellow is a classname and '& just means "and(space in css)" '
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "greenyellow",
+          "&.Mui-focused": {
+            color: "greenyellow",
           },
         },
       },
