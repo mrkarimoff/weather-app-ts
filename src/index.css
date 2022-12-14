@@ -6,6 +6,7 @@
 html {
   font-family: MartianMono;
   font-weight: 400;
+  color: #fff;
 }
 
 * {
@@ -28,6 +29,10 @@ body {
 .App .searchInp {
   width: 500px;
   margin-block: 20px;
+}
+
+.title {
+  text-align: center;
 }
 
 /* Always look at this classname when re-styling the component ".css-16whyqn-MuiFormLabel-root-MuiInputLabel-root" */

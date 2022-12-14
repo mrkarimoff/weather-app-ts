@@ -5,9 +5,12 @@ import ClearIcon from "@mui/icons-material/Clear";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import InputAdornment from "@mui/material/InputAdornment";
+import { useAppSelector, useAppDispatch } from "../redux/hooks";
+import { updateState } from "../redux/appReducer";
 
 export default function SearchInput() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen } = useAppSelector((state) => state.appReducer);
+  const dispatch = useAppDispatch();
 
   // Debounce function is used to wait for the user input
   const debounce = (fn: Function, ms = 300) => {
@@ -28,16 +31,17 @@ export default function SearchInput() {
   }
 
   const handleOpen = () => {
-    setIsOpen(true);
+    dispatch(updateState({ stateName: "isOpen", value: true }));
   };
   const handleClose = () => {
-    setIsOpen(false);
+    dispatch(updateState({ stateName: "isOpen", value: false }));
   };
 
   return (
     <Autocomplete
       fullWidth
       size="small"
+      sx={{ marginBlock: "15px" }}
       forcePopupIcon
       onOpen={handleOpen}
       onClose={handleClose}
