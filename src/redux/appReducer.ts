@@ -1,18 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export type InitialState = {
-  isOpen: boolean;
-  name: string;
-};
-
-type UpdateStatePayload = {
-  stateName: string;
-  value: any;
-};
+import { InitialState, UpdateStatePayload, City } from "./models";
 
 const initialState: InitialState = {
   isOpen: false,
-  name: "Mirfayz Karimov",
+  citiesData: [],
 };
 
 export const appSlice = createSlice({
@@ -22,8 +13,12 @@ export const appSlice = createSlice({
     updateState: (state: any, action: PayloadAction<UpdateStatePayload>) => {
       state[action.payload.stateName] = action.payload.value;
     },
+    getCities: (state, action: PayloadAction<string>) => {},
+    getCitiesSuccess: (state: any, action: PayloadAction<City[]>) => {
+      state.citiesData = action.payload;
+    },
   },
 });
 
-export const { updateState } = appSlice.actions;
+export const { updateState, getCities, getCitiesSuccess } = appSlice.actions;
 export default appSlice.reducer;

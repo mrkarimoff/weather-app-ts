@@ -20,19 +20,75 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+/* App Styles */
 .App {
-  background-color: rgba(0, 81, 147, 0.3);
+  background-color: rgba(0, 81, 147, 0.5);
   height: 100vh;
 }
 
 .App .searchInp {
-  width: 500px;
-  margin-block: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
 }
 
-.title {
+.App .gridItem {
+  width: 100%;
+  max-width: 500px;
+}
+
+.App .searchInp .title {
+  color: #fff;
   text-align: center;
+}
+
+/* Current Weather Styles */
+
+.currentWeather {
+  text-align: center;
+  font-size: 16px;
+}
+
+.currentWeather .date {
+  margin-top: 5px;
+  color: greenyellow;
+  margin-bottom: 15px;
+}
+
+.currentWeather .current {
+  text-align: center;
+}
+
+.current .main-temp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 3px;
+}
+
+.main-temp img {
+  width: 70px;
+}
+
+.main-temp div {
+  font-size: 42px;
+  font-weight: 100;
+  line-height: 1.1;
+}
+
+.main-temp div span {
+  font-size: 32px;
+}
+
+.current .real-feel {
+  font-size: 11px;
+  font-weight: 100;
+  color: greenyellow;
+}
+
+.current h4 {
+  margin-block: 12px;
 }
 
 /* Always look at this classname when re-styling the component ".css-16whyqn-MuiFormLabel-root-MuiInputLabel-root" */
