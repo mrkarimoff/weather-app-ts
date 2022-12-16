@@ -3,8 +3,8 @@ import React from "react";
 import "./App.css";
 import SearchInput from "./components/SearchInput";
 import { ThemeProvider } from "@emotion/react";
-import { updateState } from "./redux/appReducer";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import CurrentWeather from "./components/CurrentWeather";
 
 const theme = createTheme({
   typography: {
@@ -44,14 +44,16 @@ const theme = createTheme({
 
 function App() {
   const dispatch = useAppDispatch();
-  const { name, isOpen } = useAppSelector((state) => state.appReducer);
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Grid container justifyContent={"center"}>
-          <Grid className="searchInp" item>
+        <Grid container alignItems="center" flexDirection="column" sx={{ paddingInline: "10px" }}>
+          <Grid className="searchInp" item xs={5}>
             <h1 className="title">Weather App</h1>
             <SearchInput />
+          </Grid>
+          <Grid className="gridItem" item xs={5}>
+            <CurrentWeather />
           </Grid>
         </Grid>
       </div>
