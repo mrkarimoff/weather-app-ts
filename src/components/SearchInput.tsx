@@ -6,7 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
-import { updateState, getCities } from "../redux/appReducer";
+import { updateState, getCities, getWeatherForecast } from "../redux/appReducer";
 import { City } from "../redux/models";
 
 export default function SearchInput() {
@@ -27,7 +27,6 @@ export default function SearchInput() {
   function implementChange(inpVal: string) {
     let trimmedValue = inpVal.trim();
     if (trimmedValue !== "") {
-      console.log(trimmedValue);
       dispatch(getCities(trimmedValue));
     }
   }
@@ -39,7 +38,11 @@ export default function SearchInput() {
     dispatch(updateState({ stateName: "isOpen", value: false }));
   };
 
-  const handleChange = (value: string | City | null) => {};
+  const handleChange = (searchValue: any) => {
+    const [lat, lon] = searchValue.value.split(" ");
+    console.log(lat);
+    dispatch(getWeatherForecast({ lat, lon, city: searchValue.label }));
+  };
 
   return (
     <Autocomplete

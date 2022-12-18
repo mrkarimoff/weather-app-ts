@@ -19,22 +19,39 @@ body {
   background-image: url(/public/img/day3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  /* background-color: rgba(2, 35, 62, 0.741); */
 }
 /* App Styles */
+
 .App {
-  background-color: rgba(0, 81, 147, 0.5);
+  background-color: rgba(2, 35, 62, 0.741);
   height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
 }
 
 .App .searchInp {
   width: 100%;
   max-width: 500px;
   margin-top: 20px;
+  position: fixed;
+  top: -20px;
+  left: 0;
+  background-color: rgba(2, 35, 62, 0.4);
+  padding-inline: 10px;
+}
+
+.App .searchInp.hidden {
+  visibility: hidden;
+  position: static;
 }
 
 .App .gridItem {
   width: 100%;
   max-width: 500px;
+  text-align: center;
 }
 
 .App .searchInp .title {
@@ -83,12 +100,75 @@ body {
 
 .current .real-feel {
   font-size: 11px;
-  font-weight: 100;
+  font-weight: 300;
   color: greenyellow;
 }
 
 .current h4 {
   margin-block: 12px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Forecast Styles */
+
+.forecast .heading {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.forecast-container {
+  margin-top: 13px;
+  display: flex;
+  gap: 5px;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 10px;
+  position: relative;
+}
+
+.forecast-container .forecast-info {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  padding-right: 6px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.forecast-container .forecast-info.daily {
+  height: 180px;
+}
+
+.forecast-container .forecast-info .f-title {
+  font-size: 9px;
+  line-height: 1.1;
+}
+
+.forecast-container .forecast-info .f-humidity {
+  color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.forecast-container .forecast-info.last {
+  border-right: none;
+}
+
+.chart-container {
+  position: absolute;
+  top: 70px;
+}
+
+.chart-container.daily {
+  position: absolute;
+  top: 110px;
 }
 
 /* Always look at this classname when re-styling the component ".css-16whyqn-MuiFormLabel-root-MuiInputLabel-root" */
