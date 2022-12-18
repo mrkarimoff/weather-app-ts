@@ -5,6 +5,9 @@ import SearchInput from "./components/SearchInput";
 import { ThemeProvider } from "@emotion/react";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import CurrentWeather from "./components/CurrentWeather";
+import ForecastHourly from "./components/ForecastHourly";
+import ForecastDaily from "./components/ForecastDaily";
+import DiamondIcon from "@mui/icons-material/Diamond";
 
 const theme = createTheme({
   typography: {
@@ -47,13 +50,53 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Grid container alignItems="center" flexDirection="column" sx={{ paddingInline: "10px" }}>
+        <Grid
+          spacing={2}
+          container
+          alignItems="center"
+          flexDirection="column"
+          sx={{ paddingInline: "10px" }}
+        >
           <Grid className="searchInp" item xs={5}>
+            <h1 className="title">Weather</h1>
+            <SearchInput />
+          </Grid>
+          <Grid className="searchInp hidden" item xs={5}>
             <h1 className="title">Weather App</h1>
             <SearchInput />
           </Grid>
           <Grid className="gridItem" item xs={5}>
             <CurrentWeather />
+          </Grid>
+          <Grid className="gridItem" item xs={5}>
+            <div className="line"></div>
+          </Grid>
+          <Grid sx={{ marginBottom: "10px" }} className="gridItem" item xs={5}>
+            <ForecastHourly />
+          </Grid>
+          <Grid className="gridItem" item xs={5}>
+            <div className="line"></div>
+          </Grid>
+          <Grid sx={{ marginBottom: "10px" }} className="gridItem" item xs={5}>
+            <ForecastDaily />
+          </Grid>
+          <Grid className="gridItem" item xs={5}>
+            <div className="line"></div>
+          </Grid>
+          <Grid className="gridItem" item xs={5}>
+            <Typography
+              sx={{
+                textDecoration: "underline",
+                display: "flex",
+                justifyContent: "center",
+                gap: "5px",
+              }}
+              fontSize={14}
+              variant="subtitle1"
+            >
+              <DiamondIcon sx={{ color: "aqua" }} />
+              by Mirfayz Karimov
+            </Typography>
           </Grid>
         </Grid>
       </div>
