@@ -134,14 +134,14 @@ body {
 .forecast-container .forecast-info {
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   padding-right: 6px;
-  height: 140px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   gap: 7px;
 }
 
 .forecast-container .forecast-info.daily {
-  height: 180px;
+  height: 195px;
 }
 
 .forecast-container .forecast-info .f-title {
@@ -163,12 +163,12 @@ body {
 
 .chart-container {
   position: absolute;
-  top: 70px;
+  top: 80px;
 }
 
 .chart-container.daily {
   position: absolute;
-  top: 110px;
+  top: 130px;
 }
 
 /* Always look at this classname when re-styling the component ".css-16whyqn-MuiFormLabel-root-MuiInputLabel-root" */
