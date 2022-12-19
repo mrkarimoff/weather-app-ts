@@ -1,52 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PlaceIcon from "@mui/icons-material/Place";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
+import { updateState } from "../redux/appReducer";
 
 export default function CurrentWeather() {
-  const { currentWeather, forecast } = useAppSelector((state) => state.appReducer);
+  const { currentWeather, day, dayNum, month, months, time, weeks } = useAppSelector(
+    (state) => state.appReducer
+  );
   const dispatch = useAppDispatch();
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [dayNum, setDayNum] = useState(0);
-  const [time, setTime] = useState("");
-  const [date, setDate] = useState("");
+  const date = new Date();
 
   useEffect(() => {
-    console.log(currentWeather);
-    console.log(forecast);
-
     setInterval(() => {
-      const date = new Date();
-      setDay(weeks[date.getDay()]);
-      setMonth(months[date.getMonth()]);
-      setDayNum(date.getDate());
-      setTime(date.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true }));
-      setDate(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`);
+      dispatch(updateState({ stateName: "day", value: weeks[date.getDay()] }));
+      dispatch(updateState({ stateName: "month", value: months[date.getMonth()] }));
+      dispatch(updateState({ stateName: "dayNum", value: date.getDate() }));
+      dispatch(
+        updateState({
+          stateName: "time",
+          value: date.toLocaleString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: false,
+          }),
+        })
+      );
     }, 1000);
   }, [currentWeather]);
 
   return (
     <div className="currentWeather">
       <PlaceIcon fontSize="small" />
-      <div>{currentWeather?.city}</div>
+      <div>{currentWeather?.city === "" ? currentWeather?.data.name : currentWeather?.city}</div>
       <div className="date">
-        {day}, {month} {dayNum} {time} {date}
+        {day}, {month} {dayNum} {time}
       </div>
       <div className="current">
         <div className="main-temp">

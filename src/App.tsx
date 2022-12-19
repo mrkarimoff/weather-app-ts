@@ -1,5 +1,5 @@
 import { createTheme, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import SearchInput from "./components/SearchInput";
 import { ThemeProvider } from "@emotion/react";
@@ -8,6 +8,7 @@ import CurrentWeather from "./components/CurrentWeather";
 import ForecastHourly from "./components/ForecastHourly";
 import ForecastDaily from "./components/ForecastDaily";
 import DiamondIcon from "@mui/icons-material/Diamond";
+import { getWeatherForecast } from "./redux/appReducer";
 
 const theme = createTheme({
   typography: {
@@ -47,6 +48,24 @@ const theme = createTheme({
 
 function App() {
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const successCallback = (position: any) => {
+      dispatch(
+        getWeatherForecast({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+          city: "",
+        })
+      );
+    };
+    const errorCallback = (error: any) => {
+      console.log(error);
+    };
+
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">

@@ -10,6 +10,7 @@ import { updateState, getCities, getWeatherForecast } from "../redux/appReducer"
 import { City } from "../redux/models";
 
 export default function SearchInput() {
+  const [isLoading, setIsLoading] = useState(false);
   const { isOpen, citiesData } = useAppSelector((state) => state.appReducer);
   const dispatch = useAppDispatch();
 
@@ -25,6 +26,7 @@ export default function SearchInput() {
   const handleInputChange = debounce((a: string) => implementChange(a), 2000);
 
   function implementChange(inpVal: string) {
+    setIsLoading(true);
     let trimmedValue = inpVal.trim();
     if (trimmedValue !== "") {
       dispatch(getCities(trimmedValue));
@@ -47,12 +49,12 @@ export default function SearchInput() {
   return (
     <Autocomplete
       fullWidth
+      loading={isLoading}
       size="small"
       sx={{ marginBlock: "15px" }}
       forcePopupIcon
       onOpen={handleOpen}
       onClose={handleClose}
-      freeSolo
       disableClearable={false}
       onChange={(event, value) => handleChange(value)}
       clearIcon={<ClearIcon fontSize="small" sx={{ color: "#fff" }} />}
