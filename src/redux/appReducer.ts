@@ -13,6 +13,7 @@ const initialState: InitialState = {
   citiesData: [],
   currentWeather: null,
   forecast: null,
+  interval: null,
 
   months: [
     "January",
@@ -39,6 +40,10 @@ const initialState: InitialState = {
   day4: [0],
   day5: [0],
   day6: [0],
+  iconsDay: [[""]],
+  iconsNight: [[""]],
+  humidities: [[0]],
+  weekDays: [""],
 };
 
 export const appSlice = createSlice({
@@ -57,8 +62,75 @@ export const appSlice = createSlice({
       state.currentWeather = action.payload[0];
       state.forecast = action.payload[1];
     },
+
     sortData: (state, action: PayloadAction<SortData>) => {
       const { currentDay, currentMonth, currentYear } = action.payload;
+      let a: string[] = [];
+      let iconsDay: string[][] = [[], [], [], [], [], []];
+      let iconsNight: string[][] = [[], [], [], [], [], []];
+      let humidities: number[][] = [[], [], [], [], [], []];
+      let weekDays: string[] = [];
+
+      for (let i = 0; i < 6; i++) {
+        let date = new Date();
+        date.setDate(date.getDate() + i);
+        let d = date
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          })
+          .replace("/", "-")
+          .replace("/", "-");
+
+        a.push(d.slice(6, 10) + "-" + d.slice(0, 2) + "-" + d.slice(3, 5));
+      }
+
+      for (let i = 0; i < a.length; i++) {
+        state.forecast?.data.list.map((item: any) => {
+          if (a[i] === item.dt_txt.slice(0, 10)) {
+            if (item.weather[0].icon.slice(2) === "d") {
+              iconsDay[i].push(item.weather[0].icon);
+            }
+          }
+        });
+      }
+
+      for (let i = 0; i < a.length; i++) {
+        state.forecast?.data.list.map((item: any) => {
+          if (a[i] === item.dt_txt.slice(0, 10)) {
+            if (item.weather[0].icon.slice(2) === "n") {
+              iconsNight[i].push(item.weather[0].icon);
+            }
+          }
+        });
+      }
+
+      for (let i = 0; i < a.length; i++) {
+        state.forecast?.data.list.map((item: any) => {
+          if (a[i] === item.dt_txt.slice(0, 10)) {
+            humidities[i].push(item.main.humidity);
+          }
+        });
+      }
+
+      for (let i = 0; i < a.length; i++) {
+        const date = new Date(a[i]);
+        if (`${currentYear}-${currentMonth}-${currentDay}` === a[i]) {
+          weekDays.push("Today");
+        } else {
+          weekDays.push(
+            date.toLocaleDateString("en-US", {
+              weekday: "short",
+            })
+          );
+        }
+      }
+
+      state.iconsDay = iconsDay;
+      state.iconsNight = iconsNight;
+      state.humidities = humidities;
+      state.weekDays = weekDays;
 
       state.day1 = state.forecast?.data.list
         .map((item: any) => {
