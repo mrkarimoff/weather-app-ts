@@ -26,12 +26,14 @@ export default function CurrentWeather() {
         })
       );
     }, 1000);
-  }, [currentWeather]);
+  }, []);
 
   return (
     <div className="currentWeather">
       <PlaceIcon fontSize="small" />
-      <div>{currentWeather?.city === "" ? currentWeather?.data.name : currentWeather?.city}</div>
+      <div>
+        {currentWeather?.data.name},{currentWeather?.data.sys.country}
+      </div>
       <div className="date">
         {day}, {month} {dayNum} {time}
       </div>

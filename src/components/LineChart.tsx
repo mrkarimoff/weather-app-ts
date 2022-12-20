@@ -6,7 +6,7 @@ export default function LineChart(props: ChartProps) {
 
   return (
     <div>
-      <VictoryChart height={150} width={600}>
+      <VictoryChart height={130} width={600}>
         <VictoryLine
           data={data}
           style={{

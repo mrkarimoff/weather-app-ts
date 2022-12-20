@@ -141,12 +141,27 @@ body {
 }
 
 .forecast-container .forecast-info.daily {
-  height: 195px;
+  height: 220px;
 }
 
 .forecast-container .forecast-info .f-title {
   font-size: 9px;
   line-height: 1.1;
+}
+
+.forecast-container .forecast-info.daily .icon-cont {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  position: relative;
+}
+
+.forecast-container .forecast-info.daily .icon-cont .topIcon {
+  width: 35px;
+}
+
+.forecast-container .forecast-info.daily .icon-cont .bottomIcon {
+  width: 35px;
 }
 
 .forecast-container .forecast-info .f-humidity {
@@ -166,9 +181,14 @@ body {
   top: 80px;
 }
 
-.chart-container.daily {
+.chart-container-daily {
   position: absolute;
-  top: 130px;
+  top: 120px;
+}
+
+.chart-container-daily.bottom {
+  position: absolute;
+  top: 160px;
 }
 
 /* Always look at this classname when re-styling the component ".css-16whyqn-MuiFormLabel-root-MuiInputLabel-root" */

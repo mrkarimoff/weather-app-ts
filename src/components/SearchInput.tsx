@@ -7,7 +7,6 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { updateState, getCities, getWeatherForecast } from "../redux/appReducer";
-import { City } from "../redux/models";
 
 export default function SearchInput() {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,9 +40,11 @@ export default function SearchInput() {
   };
 
   const handleChange = (searchValue: any) => {
-    const [lat, lon] = searchValue.value.split(" ");
-    console.log(lat);
-    dispatch(getWeatherForecast({ lat, lon, city: searchValue.label }));
+    if (searchValue !== "" && searchValue !== null) {
+      const [lat, lon] = searchValue.value.split(" ");
+      console.log(lat);
+      dispatch(getWeatherForecast({ lat, lon, city: searchValue.label }));
+    }
   };
 
   return (

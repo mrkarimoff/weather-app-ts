@@ -5,9 +5,19 @@ import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { sortData } from "../redux/appReducer";
 
 export default function ForecastDaily() {
-  const { forecast, day1, day2, day3, day4, day5, day6 } = useAppSelector(
-    (state) => state.appReducer
-  );
+  const {
+    forecast,
+    day1,
+    day2,
+    day3,
+    day4,
+    day5,
+    day6,
+    iconsDay,
+    iconsNight,
+    humidities,
+    weekDays,
+  } = useAppSelector((state) => state.appReducer);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -30,48 +40,138 @@ export default function ForecastDaily() {
       <span className="heading">DAILY</span>
       <div className="forecast-container">
         <div className="forecast-info daily">
-          <p className="f-title">TODAY</p>
-          <img width={40} src={process.env.PUBLIC_URL + "/img/sun.png"} alt="forecastIcon" />
+          <p className="f-title">{weekDays[0].toUpperCase()}</p>
+          <div className="icon-cont">
+            <img
+              className="topIcon"
+              src={process.env.PUBLIC_URL + `/icons/${iconsDay[0] ? iconsDay[0][0] : "01d"}.png`}
+              alt="forecastIcon"
+            />
+            <div className="line"></div>
+            <img
+              className="bottomIcon"
+              src={
+                process.env.PUBLIC_URL + `/icons/${iconsNight[0] ? iconsNight[0][0] : "01n"}.png`
+              }
+              alt="forecastIcon"
+            />
+          </div>
           <div className="f-humidity">
-            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} /> 0%
+            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} />
+            {Math.round(humidities[0]?.reduce((a, b) => a + b, 0) / humidities[0]?.length)}%
           </div>
         </div>
         <div className="forecast-info daily">
-          <p className="f-title">SUN</p>
-          <img width={40} src={process.env.PUBLIC_URL + "/img/sun.png"} alt="forecastIcon" />
+          <p className="f-title">{weekDays[1]?.toUpperCase()}</p>
+          <div className="icon-cont">
+            <img
+              className="topIcon"
+              src={process.env.PUBLIC_URL + `/icons/${iconsDay[1] ? iconsDay[1][0] : "01d"}.png`}
+              alt="forecastIcon"
+            />
+            <div className="line"></div>
+            <img
+              className="bottomIcon"
+              src={
+                process.env.PUBLIC_URL + `/icons/${iconsNight[1] ? iconsNight[1][0] : "01n"}.png`
+              }
+              alt="forecastIcon"
+            />
+          </div>
           <div className="f-humidity">
-            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} /> 1%
+            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} />
+            {Math.round(humidities[1]?.reduce((a, b) => a + b, 0) / humidities[1]?.length)}%
           </div>
         </div>
         <div className="forecast-info daily">
-          <p className="f-title">MON</p>
-          <img width={40} src={process.env.PUBLIC_URL + "/img/sun.png"} alt="forecastIcon" />
+          <p className="f-title">{weekDays[2]?.toUpperCase()}</p>
+          <div className="icon-cont">
+            <img
+              className="topIcon"
+              src={process.env.PUBLIC_URL + `/icons/${iconsDay[2] ? iconsDay[2][0] : "01d"}.png`}
+              alt="forecastIcon"
+            />
+            <div className="line"></div>
+            <img
+              className="bottomIcon"
+              src={
+                process.env.PUBLIC_URL + `/icons/${iconsNight[2] ? iconsNight[2][0] : "01n"}.png`
+              }
+              alt="forecastIcon"
+            />
+          </div>
           <div className="f-humidity">
-            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} /> 0%
+            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} />
+            {Math.round(humidities[2]?.reduce((a, b) => a + b, 0) / humidities[2]?.length)}%
           </div>
         </div>
         <div className="forecast-info daily">
-          <p className="f-title">TUE</p>
-          <img width={40} src={process.env.PUBLIC_URL + "/img/sun.png"} alt="forecastIcon" />
+          <p className="f-title">{weekDays[3]?.toUpperCase()}</p>
+          <div className="icon-cont">
+            <img
+              className="topIcon"
+              src={process.env.PUBLIC_URL + `/icons/${iconsDay[3] ? iconsDay[3][0] : "01d"}.png`}
+              alt="forecastIcon"
+            />
+            <div className="line"></div>
+            <img
+              className="bottomIcon"
+              src={
+                process.env.PUBLIC_URL + `/icons/${iconsNight[3] ? iconsNight[3][0] : "01n"}.png`
+              }
+              alt="forecastIcon"
+            />
+          </div>
           <div className="f-humidity">
-            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} /> 1%
+            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} />
+            {Math.round(humidities[3]?.reduce((a, b) => a + b, 0) / humidities[3]?.length)}%
           </div>
         </div>
         <div className="forecast-info daily">
-          <p className="f-title">WED</p>
-          <img width={40} src={process.env.PUBLIC_URL + "/img/sun.png"} alt="forecastIcon" />
+          <p className="f-title">{weekDays[4]?.toUpperCase()}</p>
+          <div className="icon-cont">
+            <img
+              className="topIcon"
+              src={process.env.PUBLIC_URL + `/icons/${iconsDay[4] ? iconsDay[4][0] : "01d"}.png`}
+              alt="forecastIcon"
+            />
+            <div className="line"></div>
+            <img
+              className="bottomIcon"
+              src={
+                process.env.PUBLIC_URL + `/icons/${iconsNight[4] ? iconsNight[4][0] : "01n"}.png`
+              }
+              alt="forecastIcon"
+            />
+          </div>
           <div className="f-humidity">
-            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} /> 60%
+            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} />
+            {Math.round(humidities[4]?.reduce((a, b) => a + b, 0) / humidities[4]?.length)}%
           </div>
         </div>
         <div className="forecast-info daily last">
-          <p className="f-title">THU</p>
-          <img width={40} src={process.env.PUBLIC_URL + "/img/sun.png"} alt="forecastIcon" />
+          <p className="f-title">{weekDays[5]?.toUpperCase()}</p>
+          <div className="icon-cont">
+            <img
+              className="topIcon"
+              src={process.env.PUBLIC_URL + `/icons/${iconsDay[5] ? iconsDay[5][0] : "01d"}.png`}
+              alt="forecastIcon"
+            />
+            <div className="line"></div>
+            <img
+              className="bottomIcon"
+              src={
+                process.env.PUBLIC_URL + `/icons/${iconsNight[5] ? iconsNight[5][0] : "01n"}.png`
+              }
+              alt="forecastIcon"
+            />
+          </div>
           <div className="f-humidity">
-            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} /> 0%
+            <OpacityIcon sx={{ fontSize: "10px", color: "aqua" }} />
+            {Math.round(humidities[5]?.reduce((a, b) => a + b, 0) / humidities[5]?.length)}%
           </div>
         </div>
-        <div className="chart-container">
+        <div className="chart-container-daily">
           <LineChart
             data={[
               {
@@ -107,7 +207,7 @@ export default function ForecastDaily() {
             ]}
           />
         </div>
-        <div className="chart-container daily">
+        <div className="chart-container-daily bottom">
           <LineChart
             data={[
               {
