@@ -8,10 +8,10 @@ export default function CurrentWeather() {
     (state) => state.appReducer
   );
   const dispatch = useAppDispatch();
-  const date = new Date();
 
   useEffect(() => {
     setInterval(() => {
+      const date = new Date();
       dispatch(updateState({ stateName: "day", value: weeks[date.getDay()] }));
       dispatch(updateState({ stateName: "month", value: months[date.getMonth()] }));
       dispatch(updateState({ stateName: "dayNum", value: date.getDate() }));

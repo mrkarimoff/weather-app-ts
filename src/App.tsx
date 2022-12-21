@@ -69,13 +69,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Grid
-          spacing={2}
-          container
-          alignItems="center"
-          flexDirection="column"
-          sx={{ paddingInline: "10px" }}
-        >
+        <Grid spacing={2} container alignItems="center" flexDirection="column">
           <Grid className="searchInp" item xs={5}>
             <h1 className="title">Weather</h1>
             <SearchInput />

@@ -42,7 +42,6 @@ export default function SearchInput() {
   const handleChange = (searchValue: any) => {
     if (searchValue !== "" && searchValue !== null) {
       const [lat, lon] = searchValue.value.split(" ");
-      console.log(lat);
       dispatch(getWeatherForecast({ lat, lon, city: searchValue.label }));
     }
   };

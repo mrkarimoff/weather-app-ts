@@ -1,5 +1,5 @@
-import { VictoryLine, VictoryChart, VictoryTheme, VictoryScatter, VictoryAxis } from "victory";
-import { ChartData, ChartProps } from "../redux/models";
+import { VictoryLine, VictoryChart, VictoryScatter, VictoryAxis } from "victory";
+import { ChartProps } from "../redux/models";
 
 export default function LineChart(props: ChartProps) {
   const { data } = props;
@@ -17,6 +17,7 @@ export default function LineChart(props: ChartProps) {
         />
         <VictoryScatter style={{ data: { fill: "#fff" } }} size={5} data={data} />
         <VictoryAxis
+          tickFormat={() => ""}
           style={{
             axis: { stroke: "transparent" },
             ticks: { stroke: "transparent" },
