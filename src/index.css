@@ -58,6 +58,16 @@ body {
   width: 100%;
   max-width: 500px;
   text-align: center;
+  transform: scale(1);
+}
+
+.App .gridItem.author {
+  margin-bottom: 50px;
+  transition: 0.6s all ease-in-out;
+}
+
+.App .gridItem.author.scale {
+  transform: scale(1.2);
 }
 
 .App .searchInp .title {
@@ -84,24 +94,37 @@ body {
 
 .current .main-temp {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  gap: 3px;
+  width: 170px;
+  margin: 0 auto;
 }
 
-.main-temp img {
+.main-temp .main-icon {
   width: 70px;
+  transform: scale(1);
+  transition: 0.1s all linear;
 }
 
-.main-temp div {
+.main-temp .main-icon.scale {
+  /* width: 80px; */
+  transform: scale(1.15);
+}
+
+.main-temp .main-temp-numb {
   font-size: 42px;
   font-weight: 100;
   line-height: 1.1;
+  transition: 0.2s all ease-in-out;
 }
 
-.main-temp div span {
-  font-size: 32px;
+.main-temp .main-temp-numb:hover {
+  font-size: 50px;
+}
+
+.main-temp .main-temp-numb sup {
+  font-weight: 100;
 }
 
 .current .real-feel {

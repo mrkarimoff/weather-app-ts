@@ -1,5 +1,5 @@
 import { createTheme, Grid, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import SearchInput from "./components/SearchInput";
 import { ThemeProvider } from "@emotion/react";
@@ -43,11 +43,21 @@ const theme = createTheme({
         },
       },
     },
+    MuiGrid: {
+      styleOverrides: {
+        root: {
+          "& .MuiGrid-item": {
+            paddingLeft: "10px",
+          },
+        },
+      },
+    },
   },
 });
 
 function App() {
   const dispatch = useAppDispatch();
+  const [isScale, setIsScale] = useState(false);
 
   useEffect(() => {
     const successCallback = (position: any) => {
@@ -64,6 +74,14 @@ function App() {
     };
 
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+    setInterval(() => {
+      setIsScale(true);
+    }, 1000);
+
+    setInterval(() => {
+      setIsScale(false);
+    }, 1500);
   });
 
   return (
@@ -96,7 +114,7 @@ function App() {
           <Grid className="gridItem" item xs={5}>
             <div className="line"></div>
           </Grid>
-          <Grid className="gridItem" item xs={5}>
+          <Grid className={"gridItem author " + (isScale ? "scale" : "")} item xs={5}>
             <Typography
               sx={{
                 textDecoration: "underline",

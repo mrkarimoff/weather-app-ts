@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PlaceIcon from "@mui/icons-material/Place";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { updateState } from "../redux/appReducer";
 
 export default function CurrentWeather() {
+  const [isScale, setIsScale] = useState(false);
   const { currentWeather, day, dayNum, month, months, time, weeks } = useAppSelector(
     (state) => state.appReducer
   );
@@ -11,6 +12,7 @@ export default function CurrentWeather() {
 
   useEffect(() => {
     setInterval(() => {
+      setIsScale(true);
       const date = new Date();
       dispatch(updateState({ stateName: "day", value: weeks[date.getDay()] }));
       dispatch(updateState({ stateName: "month", value: months[date.getMonth()] }));
@@ -26,6 +28,10 @@ export default function CurrentWeather() {
         })
       );
     }, 1000);
+
+    setInterval(() => {
+      setIsScale(false);
+    }, 1500);
   }, []);
 
   return (
@@ -42,16 +48,20 @@ export default function CurrentWeather() {
           <div className="current">
             <div className="main-temp">
               <img
+                className={"main-icon " + (isScale ? "scale" : "")}
                 src={process.env.PUBLIC_URL + `/icons/${currentWeather?.data.weather[0].icon}.png`}
                 alt="Icon"
               />
               <div>
-                {Math.round(currentWeather?.data.main.temp)}°<span>C</span>
+                <span className="main-temp-numb">
+                  {Math.round(currentWeather?.data.main.temp)}
+                  <sup>°c</sup>
+                </span>
               </div>
             </div>
             <span className="real-feel">
               {Math.round(currentWeather?.data.main.temp_max)}°/
-              {Math.round(currentWeather?.data.main.temp_min)}° | RealFeel{" "}
+              {Math.round(currentWeather?.data.main.temp_min)}° | RealFeel
               {Math.round(currentWeather?.data.main.feels_like)}°
             </span>
             <h4>{currentWeather?.data.weather[0].main}</h4>
