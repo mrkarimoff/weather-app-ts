@@ -43,6 +43,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiGrid: {
+      styleOverrides: {
+        root: {
+          "& .MuiGrid-item": {
+            paddingLeft: "10px",
+          },
+        },
+      },
+    },
   },
 });
 
@@ -96,7 +105,7 @@ function App() {
           <Grid className="gridItem" item xs={5}>
             <div className="line"></div>
           </Grid>
-          <Grid className="gridItem" item xs={5}>
+          <Grid className="gridItem author" item xs={5}>
             <Typography
               sx={{
                 textDecoration: "underline",
