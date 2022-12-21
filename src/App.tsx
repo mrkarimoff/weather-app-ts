@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import SearchInput from "./components/SearchInput";
 import { ThemeProvider } from "@emotion/react";
-import { useAppDispatch } from "./redux/hooks";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import CurrentWeather from "./components/CurrentWeather";
 import ForecastHourly from "./components/ForecastHourly";
 import ForecastDaily from "./components/ForecastDaily";

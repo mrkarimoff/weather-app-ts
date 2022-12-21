@@ -43,6 +43,12 @@ body {
   padding-inline: 10px;
 }
 
+@media screen and (min-width: 500px) {
+  .App .searchInp {
+    left: unset;
+  }
+}
+
 .App .searchInp.hidden {
   visibility: hidden;
   position: static;
@@ -125,27 +131,28 @@ body {
   margin-top: 13px;
   display: flex;
   gap: 5px;
-  justify-content: space-evenly;
   align-items: center;
   font-size: 10px;
   position: relative;
 }
 
 .forecast-container .forecast-info {
+  flex: 1 1;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   padding-right: 6px;
   height: 150px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 7px;
 }
 
 .forecast-container .forecast-info.daily {
-  height: 220px;
+  height: 240px;
 }
 
 .forecast-container .forecast-info .f-title {
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1.1;
 }
 
@@ -188,7 +195,7 @@ body {
 
 .chart-container-daily.bottom {
   position: absolute;
-  top: 160px;
+  top: 180px;
 }
 
 /* Always look at this classname when re-styling the component ".css-16whyqn-MuiFormLabel-root-MuiInputLabel-root" */
