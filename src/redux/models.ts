@@ -1,5 +1,4 @@
 export type InitialState = {
-  interval: any;
   isOpen: boolean;
   citiesData: City[];
   currentWeather: null | GetForecastSuccessPayload;
@@ -20,6 +19,7 @@ export type InitialState = {
   iconsNight: string[][];
   humidities: number[][];
   weekDays: string[];
+  interval: any;
 };
 
 export type UpdateStatePayload = {
