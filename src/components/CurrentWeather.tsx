@@ -31,29 +31,33 @@ export default function CurrentWeather() {
   return (
     <div className="currentWeather">
       <PlaceIcon fontSize="small" />
-      <div>
-        {currentWeather?.data.name},{currentWeather?.data.sys.country}
-      </div>
-      <div className="date">
-        {day}, {month} {dayNum} {time}
-      </div>
-      <div className="current">
-        <div className="main-temp">
-          <img
-            src={process.env.PUBLIC_URL + `/icons/${currentWeather?.data.weather[0].icon}.png`}
-            alt="Icon"
-          />
+      {currentWeather !== null && (
+        <div>
           <div>
-            {Math.round(currentWeather?.data.main.temp)}°<span>C</span>
+            {currentWeather?.data.name},{currentWeather?.data.sys.country}
+          </div>
+          <div className="date">
+            {day}, {month} {dayNum} {time}
+          </div>
+          <div className="current">
+            <div className="main-temp">
+              <img
+                src={process.env.PUBLIC_URL + `/icons/${currentWeather?.data.weather[0].icon}.png`}
+                alt="Icon"
+              />
+              <div>
+                {Math.round(currentWeather?.data.main.temp)}°<span>C</span>
+              </div>
+            </div>
+            <span className="real-feel">
+              {Math.round(currentWeather?.data.main.temp_max)}°/
+              {Math.round(currentWeather?.data.main.temp_min)}° | RealFeel{" "}
+              {Math.round(currentWeather?.data.main.feels_like)}°
+            </span>
+            <h4>{currentWeather?.data.weather[0].main}</h4>
           </div>
         </div>
-        <span className="real-feel">
-          {Math.round(currentWeather?.data.main.temp_max)}°/
-          {Math.round(currentWeather?.data.main.temp_min)}° | RealFeel{" "}
-          {Math.round(currentWeather?.data.main.feels_like)}°
-        </span>
-        <h4>{currentWeather?.data.weather[0].main}</h4>
-      </div>
+      )}
     </div>
   );
 }
