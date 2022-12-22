@@ -4,7 +4,7 @@
 }
 
 html {
-  font-family: MartianMono;
+  font-family: MartianMono, sans-serif;
   font-weight: 400;
   color: #fff;
 }
@@ -16,11 +16,9 @@ html {
 }
 
 body {
-  background-image: url(/public/img/day3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* background-color: rgba(2, 35, 62, 0.741); */
 }
 /* App Styles */
 
@@ -39,8 +37,9 @@ body {
   position: fixed;
   top: -20px;
   left: 0;
+  z-index: 999;
   background-color: rgba(2, 35, 62, 0.4);
-  padding-inline: 10px;
+  padding-right: 13px;
 }
 
 @media screen and (min-width: 500px) {
@@ -58,12 +57,16 @@ body {
   width: 100%;
   max-width: 500px;
   text-align: center;
-  transform: scale(1);
 }
 
 .App .gridItem.author {
+  transform: scale(1);
   margin-bottom: 50px;
   transition: 0.6s all ease-in-out;
+}
+
+.App .gridItem.author:hover {
+  transform: scale(1.2);
 }
 
 .App .gridItem.author.scale {
@@ -108,7 +111,6 @@ body {
 }
 
 .main-temp .main-icon.scale {
-  /* width: 80px; */
   transform: scale(1.15);
 }
 
@@ -168,6 +170,10 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 7px;
+}
+
+.forecast-container .forecast-info:hover {
+  background-color: rgba(173, 255, 47, 0.15);
 }
 
 .forecast-container .forecast-info.daily {

@@ -15,7 +15,11 @@ export default function LineChart(props: ChartProps) {
           }}
           labels={({ datum }) => datum.y}
         />
-        <VictoryScatter style={{ data: { fill: "#fff" } }} size={5} data={data} />
+        <VictoryScatter
+          style={{ data: { fill: "#fff" }, labels: { fill: "transparent", fontSize: 0 } }}
+          size={5}
+          data={data}
+        />
         <VictoryAxis
           tickFormat={() => ""}
           style={{

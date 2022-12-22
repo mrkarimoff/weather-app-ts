@@ -1,9 +1,8 @@
 import { createTheme, Grid, Typography } from "@mui/material";
-import React, { useEffect } from "react";
-import "./App.css";
+import { useEffect } from "react";
 import SearchInput from "./components/SearchInput";
 import { ThemeProvider } from "@emotion/react";
-import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { useAppDispatch } from "./redux/hooks";
 import CurrentWeather from "./components/CurrentWeather";
 import ForecastHourly from "./components/ForecastHourly";
 import ForecastDaily from "./components/ForecastDaily";
@@ -47,7 +46,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "& .MuiGrid-item": {
-            paddingLeft: "10px",
+            paddingLeft: "13px",
           },
         },
       },

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import LineChart from "./LineChart";
 import OpacityIcon from "@mui/icons-material/Opacity";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
@@ -21,7 +21,6 @@ export default function ForecastDaily() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(forecast);
     const date = new Date();
 
     if (forecast) {
