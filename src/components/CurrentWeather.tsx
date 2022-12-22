@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PlaceIcon from "@mui/icons-material/Place";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { updateState } from "../redux/appReducer";

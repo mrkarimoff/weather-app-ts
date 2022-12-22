@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -30,6 +30,9 @@ export default function SearchInput() {
     if (trimmedValue !== "") {
       dispatch(getCities(trimmedValue));
     }
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   }
 
   const handleOpen = () => {
